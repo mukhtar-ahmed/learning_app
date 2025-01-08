@@ -2,35 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:learning_app/common/utils/app_colors.dart';
 import 'package:learning_app/common/widgets/app_shadow.dart';
 import 'package:learning_app/common/widgets/text_widget.dart';
+import 'package:learning_app/pages/signin/signin.dart';
 
 class Button extends StatelessWidget {
   const Button({
     super.key,
-    required this.index,
-    required this.controller,
+    this.onTap,
+    required this.text,
+    required this.backgroundColor,
+    required this.textColor,
   });
-  final int index;
-  final PageController controller;
+  final void Function()? onTap;
+  final String text;
+  final Color backgroundColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print('hello $index');
-        if (index < 3) {
-          controller.animateToPage(index,
-              duration: Duration(milliseconds: 300), curve: Curves.linear);
-        }
-      },
+      onTap: onTap,
       child: Container(
         height: 50,
         width: 250,
-        child: Center(
-            child: text16Normal(
-                text: index > 2 ? 'Get Started' : 'Next',
-                textColor: AppColors.primaryElementText)),
+        child: Center(child: text16Normal(text: text, textColor: textColor)),
         decoration: BoxDecoration(
-            color: AppColors.primaryElement,
+            color: backgroundColor,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [appBoxShadow()]),
       ),

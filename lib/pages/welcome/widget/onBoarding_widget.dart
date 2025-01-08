@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:learning_app/common/utils/app_colors.dart';
 import 'package:learning_app/common/widgets/button.dart';
 import 'package:learning_app/common/widgets/text_widget.dart';
+import 'package:learning_app/pages/signin/signin.dart';
 
 class OnBoardingWidget extends StatelessWidget {
   const OnBoardingWidget({
@@ -34,9 +36,18 @@ class OnBoardingWidget extends StatelessWidget {
           height: 20,
         ),
         Button(
-          index: index,
-          controller: controller,
-        )
+            textColor: AppColors.primaryElementText,
+            backgroundColor: AppColors.primaryElement,
+            text: index > 2 ? 'Get Started' : 'Next',
+            onTap: () {
+              if (index < 3) {
+                controller.animateToPage(index,
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.linear);
+              } else {
+                Navigator.pushNamed(context, Signin.id);
+              }
+            })
       ],
     );
   }

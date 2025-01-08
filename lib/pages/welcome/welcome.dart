@@ -1,10 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:learning_app/common/utils/app_colors.dart';
 import 'package:learning_app/pages/notifier/welcome_notifier.dart';
 import 'package:learning_app/pages/welcome/widget/onBoarding_widget.dart';
 
 class Welcome extends ConsumerWidget {
+  static const String id = '/welcome';
   Welcome({super.key});
   final PageController controller = PageController();
 
@@ -15,6 +17,7 @@ class Welcome extends ConsumerWidget {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.white,
           body: Stack(
             alignment: AlignmentDirectional.topCenter,
             children: [

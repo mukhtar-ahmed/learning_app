@@ -1,96 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_app/pages/signin/signin.dart';
 import 'package:learning_app/pages/welcome/welcome.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
+/// The root widget of the application.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Welcome(),
-    );
-  }
-}
-
-final count = StateProvider<int>((ref) {
-  return 1;
-});
-
-class MyHomePage extends ConsumerWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final _counter = ref.watch(count);
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Flutter Demo'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
+    // Initialize ScreenUtil for responsive UI scaling
+    return ScreenUtilInit(
+      designSize:
+          const Size(360, 690), // Set the design size (width x height) in dp
+      minTextAdapt: true, // Ensure text scales dynamically to fit screen size
+      splitScreenMode: true, // Enable split screen mode support
+      builder: (_, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false, // Disable debug banner
+          title: 'Learning App',
+          theme: ThemeData(
+            primarySwatch: Colors.blue, // Set primary color theme
+            // Apply dynamic font scaling using ScreenUtil
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
-        ),
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            FloatingActionButton(
-              heroTag: 'Increment',
-              onPressed: () {
-                ref.read(count.notifier).state++;
-              },
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-            FloatingActionButton(
-              heroTag: 'Navigation',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const SecondPage(),
-                    ));
-              },
-              child: const Icon(Icons.arrow_forward),
-            ),
-          ],
-        ));
-  }
-}
-
-class SecondPage extends ConsumerWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final _counter = ref.watch(count);
-    return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Text(_counter.toString()),
-      ),
+          // Define initial route for navigation
+          initialRoute: Welcome.id,
+          routes: {
+            Welcome.id: (context) => Welcome(),
+            Signin.id: (context) => Signin(),
+          },
+        );
+      },
     );
   }
 }
