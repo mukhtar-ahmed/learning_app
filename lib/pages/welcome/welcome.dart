@@ -17,7 +17,7 @@ class Welcome extends ConsumerWidget {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.red,
           body: Stack(
             alignment: AlignmentDirectional.topCenter,
             children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_app/common/utils/app_style.dart';
 import 'package:learning_app/pages/signin/signin.dart';
 import 'package:learning_app/pages/welcome/welcome.dart';
 
@@ -24,11 +25,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false, // Disable debug banner
           title: 'Learning App',
-          theme: ThemeData(
-            primarySwatch: Colors.blue, // Set primary color theme
-            // Apply dynamic font scaling using ScreenUtil
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-          ),
+          theme: AppTheme.appThemeData,
           // Define initial route for navigation
           initialRoute: Welcome.id,
           routes: {

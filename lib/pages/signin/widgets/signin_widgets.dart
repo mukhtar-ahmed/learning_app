@@ -5,10 +5,8 @@ import 'package:learning_app/common/widgets/text_widget.dart';
 
 AppBar buildAppBar() {
   return AppBar(
-    backgroundColor: Colors.white,
     title: text16Normal(text: 'Signin', textColor: AppColors.primaryText),
     centerTitle: true,
-    elevation: 0.5,
     shadowColor: Colors.grey,
   );
 }
