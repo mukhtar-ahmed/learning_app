@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning_app/common/utils/app_style.dart';
 import 'package:learning_app/pages/signin/signin.dart';
+import 'package:learning_app/pages/signup/signup.dart';
 import 'package:learning_app/pages/welcome/welcome.dart';
 
 void main() {
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           routes: {
             Welcome.id: (context) => Welcome(),
             Signin.id: (context) => Signin(),
+            Signup.id: (context) => Signup(),
           },
         );
       },

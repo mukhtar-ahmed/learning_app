@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning_app/common/utils/app_colors.dart';
+import 'package:learning_app/common/widgets/app_appbar.dart';
 import 'package:learning_app/common/widgets/button.dart';
 import 'package:learning_app/common/widgets/text_widget.dart';
 import 'package:learning_app/pages/signin/widgets/signin_widgets.dart';
+import 'package:learning_app/pages/signup/signup.dart';
 
 class Signin extends StatelessWidget {
   static const String id = '/signin';
@@ -12,8 +14,7 @@ class Signin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
-      appBar: buildAppBar(),
+      appBar: buildAppBar(title: 'Signin'),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         child: Column(
@@ -23,8 +24,8 @@ class Signin extends StatelessWidget {
             thirdPartLogin(),
             SizedBox(height: 30.h),
             Center(child: text14Normal(text: 'Or use your email to login')),
-            CustomTextField(hintText: 'Email', icon: Icons.email),
-            CustomTextField(hintText: 'Password', icon: Icons.lock),
+            // CustomTextField(hintText: 'Email', icon: Icons.email),
+            // CustomTextField(hintText: 'Password', icon: Icons.lock),
             Align(
               alignment: Alignment.centerRight,
               child: Padding(
@@ -50,6 +51,9 @@ class Signin extends StatelessWidget {
                 text: 'Signup',
                 backgroundColor: AppColors.primaryElementText,
                 textColor: AppColors.primaryText,
+                onTap: () {
+                  Navigator.pushNamed(context, Signup.id);
+                },
               ),
             )
           ],

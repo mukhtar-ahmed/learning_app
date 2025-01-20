@@ -3,14 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learning_app/common/utils/app_colors.dart';
 import 'package:learning_app/common/widgets/text_widget.dart';
 
-AppBar buildAppBar() {
-  return AppBar(
-    title: text16Normal(text: 'Signin', textColor: AppColors.primaryText),
-    centerTitle: true,
-    shadowColor: Colors.grey,
-  );
-}
-
 Widget thirdPartLogin() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,10 +23,14 @@ Widget loginButton(String imagePath) {
   );
 }
 
-Padding CustomTextField({required String hintText, required IconData icon}) {
+Padding CustomTextField(
+    {required String hintText,
+    required IconData icon,
+    required TextEditingController controller}) {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 10.h),
     child: TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         labelText: hintText,
         prefixIcon: Icon(icon),

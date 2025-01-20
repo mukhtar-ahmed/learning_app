@@ -33,7 +33,7 @@ Widget text14Normal(
     Color textColor = AppColors.primaryThreeElementText}) {
   return Text(
     text,
-    textAlign: TextAlign.center,
+    textAlign: TextAlign.start,
     style: TextStyle(
       fontSize: 14,
       color: textColor,
