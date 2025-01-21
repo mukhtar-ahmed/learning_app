@@ -38,7 +38,7 @@ class Signin extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 25.h),
-              child: Center(
+              child: const Center(
                 child: Button(
                   text: 'Log In',
                   backgroundColor: AppColors.primaryElement,

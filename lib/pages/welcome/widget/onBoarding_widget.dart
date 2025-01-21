@@ -25,14 +25,14 @@ class OnBoardingWidget extends StatelessWidget {
       children: [
         Image.asset(imagePath),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: text24Normal(text: title),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: text16Normal(text: subTitle),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Button(
@@ -42,7 +42,7 @@ class OnBoardingWidget extends StatelessWidget {
             onTap: () {
               if (index < 3) {
                 controller.animateToPage(index,
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.linear);
               } else {
                 Navigator.pushNamed(context, Signin.id);

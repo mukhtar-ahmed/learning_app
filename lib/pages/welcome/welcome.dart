@@ -56,11 +56,11 @@ class Welcome extends ConsumerWidget {
                 ],
               ),
               Positioned(
+                bottom: 100,
                 child: DotsIndicator(
                   dotsCount: 3,
                   position: currentIndex,
                 ),
-                bottom: 100,
               )
             ],
           ),

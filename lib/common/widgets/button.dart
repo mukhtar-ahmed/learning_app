@@ -24,11 +24,11 @@ class Button extends StatelessWidget {
       child: Container(
         height: 50,
         width: 250,
-        child: Center(child: text16Normal(text: text, textColor: textColor)),
         decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(10),
             boxShadow: [appBoxShadow()]),
+        child: Center(child: text16Normal(text: text, textColor: textColor)),
       ),
     );
   }
