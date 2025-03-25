@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_app/common/global.dart';
 import 'package:learning_app/common/utils/app_style.dart';
 import 'package:learning_app/pages/signin/signin.dart';
+import 'package:learning_app/pages/signin/signin_page.dart';
 import 'package:learning_app/pages/signup/signup.dart';
 import 'package:learning_app/pages/welcome/welcome.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  Global.init();
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -39,6 +37,7 @@ class MyApp extends StatelessWidget {
             Welcome.id: (context) => Welcome(),
             Signin.id: (context) => const Signin(),
             Signup.id: (context) => const Signup(),
+            SigninPage.id: (context) => const SigninPage()
           },
         );
       },

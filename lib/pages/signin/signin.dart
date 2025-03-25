@@ -4,6 +4,7 @@ import 'package:learning_app/common/utils/app_colors.dart';
 import 'package:learning_app/common/widgets/app_appbar.dart';
 import 'package:learning_app/common/widgets/button.dart';
 import 'package:learning_app/common/widgets/text_widget.dart';
+import 'package:learning_app/pages/signin/signin_page.dart';
 import 'package:learning_app/pages/signin/widgets/signin_widgets.dart';
 import 'package:learning_app/pages/signup/signup.dart';
 
@@ -38,11 +39,14 @@ class Signin extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 25.h),
-              child: const Center(
+              child: Center(
                 child: Button(
                   text: 'Log In',
                   backgroundColor: AppColors.primaryElement,
                   textColor: AppColors.primaryElementText,
+                  onTap: () {
+                    Navigator.pushNamed(context, SigninPage.id);
+                  },
                 ),
               ),
             ),

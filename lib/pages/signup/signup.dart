@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:learning_app/common/global_loader/app_loader.dart';
 import 'package:learning_app/common/utils/app_colors.dart';
 import 'package:learning_app/common/widgets/app_appbar.dart';
 import 'package:learning_app/common/widgets/button.dart';
@@ -29,6 +30,7 @@ class _SignupState extends ConsumerState<Signup> {
   @override
   Widget build(BuildContext context) {
     final registerState = ref.watch(signupNotifierProvider);
+    final appLoader = ref.watch(appLoaderProvider);
     return Scaffold(
       appBar: buildAppBar(title: 'Signup'),
       body: SingleChildScrollView(
@@ -99,16 +101,24 @@ class _SignupState extends ConsumerState<Signup> {
                       SizedBox(
                         height: 100.h,
                       ),
-                      Center(
-                        child: Button(
-                          text: 'Signup',
-                          backgroundColor: AppColors.primaryElement,
-                          textColor: AppColors.primaryElementText,
-                          onTap: () {
-                            _signupController.handleSignup();
-                          },
-                        ),
-                      )
+                      appLoader
+                          ? Center(
+                              child: Button(
+                                text: 'Loading',
+                                backgroundColor: AppColors.primaryElement,
+                                textColor: AppColors.primaryElementText,
+                              ),
+                            )
+                          : Center(
+                              child: Button(
+                                text: 'Signup',
+                                backgroundColor: AppColors.primaryElement,
+                                textColor: AppColors.primaryElementText,
+                                onTap: () {
+                                  _signupController.handleSignup();
+                                },
+                              ),
+                            )
                     ],
                   ))
             ],
